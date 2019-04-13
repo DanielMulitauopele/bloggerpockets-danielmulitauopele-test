@@ -3,9 +3,9 @@ require 'rails_helper'
 describe 'posts index' do
   context 'as a user' do
     before (:each) do
-      @author = User.create(name: 'Dan', email: 'dan@dan.com', password_digest: '234')
-      @post1 = @author.posts.create(title: 'post', body: 'stuff')
-      @post2 = @author.posts.create(title: 'post2', body: 'stuff2')
+      @author = User.create!(name: 'Dan', email: 'dan@dan.com', password_digest: '234')
+      @post1 = @author.posts.create!(title: 'post', body: 'stuff', published: true)
+      @post2 = @author.posts.create!(title: 'post2', body: 'stuff2', published: true)
     end
 
     it "should list all posts" do
