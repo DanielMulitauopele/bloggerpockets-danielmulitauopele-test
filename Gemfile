@@ -25,6 +25,7 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "chromedriver-helper"
   gem 'launchy'
+  gem 'pry'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
