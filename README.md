@@ -51,9 +51,8 @@ To test this application locally, take the following steps:
 
 I chose to approach this take home exercise with a step-by-step methodology. In general, when I don't plan out my steps ahead of time, even small tasks like this one can seem overwhelming. What follows is a step-by-step walk through of my thought process when refactoring this repository. Each listed category is chronological in order: I began by thinking of setup challenges, and made my way through the MVC architecture of the application. In essence, I went outward from the database. I hope this approach makes sense, and please feel free to send me any questions that you might have!
 
-### Problem/Solution Process
 
-#### Setup
+### Setup
 
 ##### Problem
 
@@ -68,7 +67,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 - [X] Run gem install bundler -v 1.17.3 (2.0 will not work)
 - [X] Run bundle
 
-#### Testing
+### Testing
 
 ##### Problem
 
@@ -82,7 +81,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 - [X] Add feature tests for comments index
 - [] Add model tests
 
-#### Routes
+### Routes
 
 ##### Problem
 
@@ -94,7 +93,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 - [X] Use resources :posts, only: [:index, :show] line to remove unused actions
 - [] Add resources for comments, only: [:index]
 
-#### DB Migrations
+### DB Migrations
 
 ##### Problem
 
@@ -104,7 +103,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 
 - [X] TBD
 
-#### Models
+### Models
 
 ##### Problem
 
@@ -119,7 +118,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 - [] Move logic from controller to model (sort)
 - [] Eliminate redundancies
 
-#### Controllers
+### Controllers
 
 ##### Problem
 
@@ -134,7 +133,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 - [] Create comments controller
 - [] Remove unnecessary and expensive instance variables (use @user.posts instead of creating @posts)
 
-#### Views
+### Views
 
 ##### Problem
 
