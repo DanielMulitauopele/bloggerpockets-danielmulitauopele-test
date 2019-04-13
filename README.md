@@ -51,24 +51,101 @@ To test this application locally, take the following steps:
 
 I chose to approach this take home exercise with a step-by-step methodology. In general, when I don't plan out my steps ahead of time, even small tasks like this one can seem overwhelming. What follows is a step-by-step walk through of my thought process when refactoring this repository. Each listed category is chronological in order: I began by thinking of setup challenges, and made my way through the MVC architecture of the application. In essence, I went outward from the database. I hope this approach makes sense, and please feel free to send me any questions that you might have!
 
-### Initial Planning Process
+### Problem/Solution Process
 
 #### Setup
 
-The first order of business was to clone down the repo from BiggerPockets, and bundle accordingly. I'm not entirely sure if this process was intentional, but I had been working in Ruby 2.4, while the repo was built in Rails 5. I tried to upgrade my Ruby version to 2.5.3, but it was not included in my rbenv ruby-build. Additionally, my version of bundle did not support Ruby 2.5.3, and bundle 2.0 wouldn't work either, so I needed to upgrade bundler to a specific version: 1.17.3. Again, probably not intentional, but I wanted to address the fact that the setup takes some time (and it was not listed in the documentation of the original repo). Here were my steps:
+##### Problem
 
-* Run rbenv install --list (verify that my ruby version was not listed)
-* Run brew update && brew upgrade ruby-build
-* Run rbenv install --list (Should now list ruby 2.5.3)
-* Run gem install bundler -v 1.17.3 (2.0 will not work)
-* Run bundle
+* Different versions of Ruby
+* Different versions of Bundler
 
-#### Adding Testing
-#### Seeding
+##### Action Steps
+
+- [X] Run rbenv install --list (verify that my ruby version was not listed)
+- [X] Run brew update && brew upgrade ruby-build
+- [X] Run rbenv install --list (Should now list ruby 2.5.3)
+- [X] Run gem install bundler -v 1.17.3 (2.0 will not work)
+- [X] Run bundle
+
+#### Testing
+
+##### Problem
+
+* No testing at all (lack of testing makes refactoring difficult)
+
+##### Action Steps
+
+- [X] Add feature tests for posts index
+- [X] Add feature tests for posts show
+- [X] Add feature tests for users index
+- [X] Add feature tests for comments index
+- [] Add model tests
+
+#### Routes
+
+##### Problem
+
+* Unused routes (create, edit, new actions)
+* Comments did not have proper routes
+
+##### Action Steps
+
+- [X] Use resources :posts, only: [:index, :show] line to remove unused actions
+- [] Add resources for comments, only: [:index]
+
 #### DB Migrations
+
+##### Problem
+
+* TBD
+
+##### Action Steps
+
+- [X] TBD
+
 #### Models
+
+##### Problem
+
+* Certain attributes in models are not validated
+* Most DB logic should exist here, but it does not
+* Code is not optimized, uses redundancies
+* Scope logic
+
+##### Action Steps
+
+- [] Use model tests to validate necessary attributes
+- [] Move logic from controller to model (sort)
+- [] Eliminate redundancies
+
 #### Controllers
+
+##### Problem
+
+* A good amount of logic is done in the controllers, these should be pushed down to the model level
+* Comments method in the posts controller disobeys restful architecture (goes back to routes)
+* Sort logic in posts controller belong in model
+* Unnecessary instance variables
+
+##### Action Steps
+
+- [] Move logic from controller to model (sort)
+- [] Create comments controller
+- [] Remove unnecessary and expensive instance variables (use @user.posts instead of creating @posts)
+
 #### Views
+
+##### Problem
+
+* Comments index lists user name, but the link doesn’t work
+* JSON delivers too much data to user, should use serializers to limit what the user gets to see (PASSWORD DIGEST SHOULD NOT BE VISIBLE)
+
+
+##### Action Steps
+
+- [] Create relationship from comments to user, add link_to path
+- [] Add serializers for JSON data
 
 ## Dependencies
 
