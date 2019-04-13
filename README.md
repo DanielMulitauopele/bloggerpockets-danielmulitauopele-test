@@ -92,7 +92,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 ##### Action Steps
 
 - [X] Use resources :posts, only: [:index, :show] line to remove unused actions
-- [X] Add resources for comments, only: [:index]
+- [] Add resources for comments, only: [:index]
 
 #### DB Migrations
 
@@ -115,12 +115,37 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 
 ##### Action Steps
 
-- [X] Use model tests to validate necessary attributes
-- [X] Move logic from controller to model (sort)
-- [X] Eliminate redundancies
+- [] Use model tests to validate necessary attributes
+- [] Move logic from controller to model (sort)
+- [] Eliminate redundancies
 
 #### Controllers
+
+##### Problem
+
+* A good amount of logic is done in the controllers, these should be pushed down to the model level
+* Comments method in the posts controller disobeys restful architecture (goes back to routes)
+* Sort logic in posts controller belong in model
+* Unnecessary instance variables
+
+##### Action Steps
+
+- [] Move logic from controller to model (sort)
+- [] Create comments controller
+- [] Remove unnecessary and expensive instance variables (use @user.posts instead of creating @posts)
+
 #### Views
+
+##### Problem
+
+* Comments index lists user name, but the link doesn’t work
+* JSON delivers too much data to user, should use serializers to limit what the user gets to see (PASSWORD DIGEST SHOULD NOT BE VISIBLE)
+
+
+##### Action Steps
+
+- [] Create relationship from comments to user, add link_to path
+- [] Add serializers for JSON data
 
 ## Dependencies
 
