@@ -9,17 +9,18 @@ describe 'posts index' do
       @post3 = @author.posts.create!(title: 'post3', body: 'stuff3')
     end
 
-    it "should list all posts" do
+    it "should list all published posts" do
       visit posts_path
 
       expect(current_path).to eq(posts_path)
 
-      expect(page).to have_content(@post1.title)
+      expect(page).to have_link(@post1.title)
       expect(page).to have_content(@post1.body)
-      expect(page).to have_content(@post2.title)
+      expect(page).to have_link(@post2.title)
       expect(page).to have_content(@post2.body)
     end
-    it "should not list posts that are not published" do
+
+    it "should not list unpublished posts" do
       visit posts_path
 
       expect(current_path).to eq(posts_path)
