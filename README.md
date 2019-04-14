@@ -138,6 +138,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 ##### Problem
 
 * Comments index lists user name, but the link doesn’t work
+* Comments view page uses both ordered list and unordered list on the same list. Needs adjustment of HTML. 
 * JSON delivers too much data to user, should use serializers to limit what the user gets to see (PASSWORD DIGEST SHOULD NOT BE VISIBLE)
 
 
