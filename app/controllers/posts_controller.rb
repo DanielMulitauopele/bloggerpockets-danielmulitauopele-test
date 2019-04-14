@@ -3,10 +3,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.published
-
-    if params[:sort]
-      @posts = @posts.switch_order(params[:sort])
-    end
+    @posts = @posts.switch_order(params[:sort]) if params[:sort]
 
     respond_to :html
   end
