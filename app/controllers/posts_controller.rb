@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(published: true)
 
-    if params[:sort].present?
+    if params[:sort]
       @posts = @posts.order("created_at #{params[:sort]}")
     end
 
