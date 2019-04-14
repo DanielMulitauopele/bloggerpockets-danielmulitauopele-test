@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :posts, only: [:index, :show]  do
-    get :comments, on: :member
+    resources :comments, only: [:index]
   end
 
   resources :users, only: [:show]
