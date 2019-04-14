@@ -2,10 +2,10 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.where(published: true)
+    @posts = Post.published
 
     if params[:sort]
-      @posts = @posts.order("created_at #{params[:sort]}")
+      @posts = @posts.switch_order(params[:sort])
     end
 
     respond_to :html
