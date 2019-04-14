@@ -10,6 +10,6 @@
 
     <p>Posted by: <%= link_to post.user.name, user_path(post.user) %>, <%= time_ago_in_words post.created_at %> ago</p>
     <p><%= post.body %></p>
-    <hr />
+    <hr>
   </main>
 <% end %>
