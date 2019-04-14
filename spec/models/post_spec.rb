@@ -5,4 +5,9 @@ describe Post, type: :model do
     it {should validate_presence_of :title}
     it {should validate_presence_of :body}
   end
+
+  describe 'relationships' do
+    it {should have_many :comments}
+    it {should belong_to :user}
+  end
 end
