@@ -8,9 +8,7 @@ class PostsController < ApplicationController
       @posts = @posts.order("created_at #{params[:sort]}")
     end
 
-    respond_to do |format|
-      format.html
-    end
+    respond_to :html
   end
 
   def show
