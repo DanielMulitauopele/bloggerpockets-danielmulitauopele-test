@@ -8,6 +8,8 @@
 * [Setup](#setup)
 * [Testing](#testing)
 * [Implementation](#implementation)
+* [Problems](#problems)
+* [Solutions](#solutions)
 * [Dependencies](#dependencies)
 * [Contributors](#contributors)
 
@@ -49,17 +51,31 @@ To test this application locally, take the following steps:
 
 ## Implementation
 
-I chose to approach this take home exercise with a step-by-step methodology. In general, when I don't plan out my steps ahead of time, even small tasks like this one can seem overwhelming. What follows is a step-by-step walk through of my thought process when refactoring this repository. Each listed category is chronological in order: I began by thinking of setup problems, and made my way through the MVC architecture of the application. In essence, I went outward from the database. I hope this approach makes sense, and please feel free to send me any questions that you might have!
+I chose to approach this take home exercise with a step-by-step methodology. What follows is a walkthrough of my thought process when refactoring this repository. Because I was unable to ask many clarifying questions before the weekend, I chose to make a few assumptions:
 
-### Problems
+* The database schema functions as was intended
+* The main features, in general, worked as intended. A few refactors are needed, but the main functionality should be preserved.
 
+With these assumptions in mind, I began work on refactoring code so that the main functionality was not changed significantly. I chose to focus on improving the readability of the code and ensuring that the code followed Rails best practices. This was my process:
 
-* Different versions of Ruby
-* Different versions of Bundler
+1. Create agile board to plan out necessary steps
+2. Briefly skim code to mark down potential problem areas
+3. Clone code down and run setup
+4. Support existing code with tests so that code does not break. (*If this were a production repo with many users, I would absolutely do this first. Tests help provide stability, and while they may seem overkill for this small repo, I felt them necessary to honor the existing codebase.*)
+5. Review/Refactor routes
+6. Review/Refactor models
+7. Review/Refactor controllers
+8. Review/Refactor views
+
+## Problems
+
+* Different versions of Ruby (2.4.1 on local machine vs 2.5.3)
+* Different versions of Bundler 
 
 *See [Setup Solutions](#setup-solutions)*
 
-* No testing at all (lack of testing makes refactoring difficult)
+* No feature tests
+* No model tests
 
 *See [Testing Solutions](#testing-solutions)*
 
@@ -69,26 +85,27 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 *See [Routes Solutions](#routes-solutions)*
 
 * Certain attributes in models are not validated
-* Most DB logic should exist here, but it does not
-* Code is not optimized, uses redundancies
-* Scope logic
+* Certain relationships are not referenced
+* Most business logic should exist here, but it does not. Logic rests in controllers.
+* Code is not optimized, uses redundancies (validates_presence_of is used twice when only needed once)
 
 *See [Model Solutions](#model-solutions)*
 
-* A good amount of logic is done in the controllers, these should be pushed down to the model level
+* Logic is done in the controllers, these should be pushed down to the model level
 * Comments method in the posts controller disobeys restful architecture (goes back to routes)
 * Sort logic in posts controller belong in model
+* Published scope is not used in posts controller
 * Unnecessary instance variables
 
 *See [Controller Solutions](#controller-solutions)*
 
 * Comments index lists user name, but the link doesn’t work
-* Comments view page uses both ordered list and unordered list on the same list. Needs adjustment of HTML.
-* JSON delivers too much data to user, should use serializers to limit what the user gets to see (PASSWORD DIGEST SHOULD NOT BE VISIBLE)
+* Incorrect HTML syntax (ordered list paired with unordered list, no indentation, incorrect use of hr tag)
+* JSON delivers too much data to user, should use serializers to limit what the user gets to see (password_digest, especially, should not be visible)
 
 *See [Views Solutions](#views-solutions)*
 
-### Solutions
+## Solutions
 
 ##### Setup Solutions
 - [X] Run rbenv install --list (verify that my ruby version was not listed)
@@ -98,29 +115,41 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 - [X] Run bundle
 
 ##### Testing Solutions
+- [X] Add RSpec for testing
 - [X] Add feature tests for posts index
 - [X] Add feature tests for posts show
 - [X] Add feature tests for users index
 - [X] Add feature tests for comments index
-- [ ] Add model tests
+- [X] Add model tests for post
+- [X] Add model tests for user
+- [X] Add model tests for comment
 
 ##### Routes Solutions
 - [X] Use resources :posts, only: [:index, :show] line to remove unused actions
-- [ ] Add resources for comments, only: [:index]
+- [X] Use resources :users, only: [:show] line to remove unused actions
+- [X] Add resources for comments, only: [:index]
 
 ##### Model Solutions
-- [ ] Use model tests to validate necessary attributes
-- [ ] Move logic from controller to model (sort)
-- [ ] Eliminate redundancies
+- [X] Use model tests to validate necessary attributes
+- [X] Use model tests to validate necessary relationships
+- [X] Add validations/relationships to models
+- [X] Move logic from posts controller to post model (sort)
+- [X] Eliminate redundancies
 
 ##### Controller Solutions
-- [ ] Move logic from controller to model (sort)
-- [ ] Create comments controller
-- [ ] Remove unnecessary and expensive instance variables (use @user.posts instead of creating @posts)
+- [X] Move logic from controller to model (sort)
+- [X] Uses published scope instead of making direct DB call through controller
+- [X] Create comments controller with index action
+- [X] Remove unnecessary and expensive instance variables (use @user.posts in views instead of creating @posts)
+- [X] Refactor controller code for easier reading (respond_to :html, instead respond_to block with |format|)
 
 ##### Views Solutions
-- [ ] Create relationship from comments to user, add link_to path
-- [ ] Add serializers for JSON data
+- [X] Create relationship link from comments to user, add link_to path
+- [X] Add user serializer for JSON data
+- [X] Add post serializer for JSON data
+- [X] Fix hr tag
+- [X] Fix ol/ul list error
+- [X] Add proper indentations
 
 ## Dependencies
 
