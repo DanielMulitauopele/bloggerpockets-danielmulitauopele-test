@@ -38,7 +38,7 @@ To setup this application locally, take the following steps:
 
 * Clone this repository down into a local directory of your choice.
 * Navigate(cd) into bloggerpockets-danielmulitauopele-test
-* Run bundle (For issues, see Setup section in [Implementation](#implementation))
+* Run bundle (For issues, see actions in [Setup Solutions](#setup-solutions))
 * Run rails db:{create,migrate,seed}
 * Run rails s
 * Navigate to localhost:3000 in your browser
@@ -47,7 +47,7 @@ To setup this application locally, take the following steps:
 
 To test this application locally, take the following steps:
 
-* After running bundle and installing dependencies, run rspec to run all tests
+* After running bundle and installing dependencies, run `rspec` to run all tests
 
 ## Implementation
 
