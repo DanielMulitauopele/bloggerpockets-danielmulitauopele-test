@@ -79,7 +79,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 - [X] Add feature tests for posts show
 - [X] Add feature tests for users index
 - [X] Add feature tests for comments index
-- [] Add model tests
+- [ ] Add model tests
 
 ### Routes
 
@@ -91,7 +91,7 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 ##### Action Steps
 
 - [X] Use resources :posts, only: [:index, :show] line to remove unused actions
-- [] Add resources for comments, only: [:index]
+- [ ] Add resources for comments, only: [:index]
 
 ### DB Migrations
 
@@ -114,9 +114,9 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 
 ##### Action Steps
 
-- [] Use model tests to validate necessary attributes
-- [] Move logic from controller to model (sort)
-- [] Eliminate redundancies
+- [ ] Use model tests to validate necessary attributes
+- [ ] Move logic from controller to model (sort)
+- [ ] Eliminate redundancies
 
 ### Controllers
 
@@ -129,9 +129,9 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 
 ##### Action Steps
 
-- [] Move logic from controller to model (sort)
-- [] Create comments controller
-- [] Remove unnecessary and expensive instance variables (use @user.posts instead of creating @posts)
+- [ ] Move logic from controller to model (sort)
+- [ ] Create comments controller
+- [ ] Remove unnecessary and expensive instance variables (use @user.posts instead of creating @posts)
 
 ### Views
 
@@ -144,8 +144,8 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 
 ##### Action Steps
 
-- [] Create relationship from comments to user, add link_to path
-- [] Add serializers for JSON data
+- [ ] Create relationship from comments to user, add link_to path
+- [ ] Add serializers for JSON data
 
 ## Dependencies
 
