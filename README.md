@@ -45,57 +45,74 @@ To setup this application locally, take the following steps:
 
 To test this application locally, take the following steps:
 
-* TBD
+* After running bundle and installing dependencies, run rspec to run all tests
 
 ## Implementation
 
-I chose to approach this take home exercise with a step-by-step methodology. In general, when I don't plan out my steps ahead of time, even small tasks like this one can seem overwhelming. What follows is a step-by-step walk through of my thought process when refactoring this repository. Each listed category is chronological in order: I began by thinking of setup challenges, and made my way through the MVC architecture of the application. In essence, I went outward from the database. I hope this approach makes sense, and please feel free to send me any questions that you might have!
-
+I chose to approach this take home exercise with a step-by-step methodology. In general, when I don't plan out my steps ahead of time, even small tasks like this one can seem overwhelming. What follows is a step-by-step walk through of my thought process when refactoring this repository. Each listed category is chronological in order: I began by thinking of setup problems, and made my way through the MVC architecture of the application. In essence, I went outward from the database. I hope this approach makes sense, and please feel free to send me any questions that you might have!
 
 ### Problems
 
+
 * Different versions of Ruby
 * Different versions of Bundler
+**See Setup Solutions**
+
 * No testing at all (lack of testing makes refactoring difficult)
+**See Testing Solutions**
+
 * Unused routes (create, edit, new actions)
 * Comments did not have proper routes
+**See Routes Solutions**
+
 * Certain attributes in models are not validated
 * Most DB logic should exist here, but it does not
 * Code is not optimized, uses redundancies
 * Scope logic
+**See Model Solutions**
 
 * A good amount of logic is done in the controllers, these should be pushed down to the model level
 * Comments method in the posts controller disobeys restful architecture (goes back to routes)
 * Sort logic in posts controller belong in model
 * Unnecessary instance variables
+**See Controller Solutions**
 
 * Comments index lists user name, but the link doesn’t work
 * Comments view page uses both ordered list and unordered list on the same list. Needs adjustment of HTML.
 * JSON delivers too much data to user, should use serializers to limit what the user gets to see (PASSWORD DIGEST SHOULD NOT BE VISIBLE)
+**See Views Solutions**
 
 ### Solutions
 
+##### Setup Solutions
 - [X] Run rbenv install --list (verify that my ruby version was not listed)
 - [X] Run brew update && brew upgrade ruby-build
 - [X] Run rbenv install --list (Should now list ruby 2.5.3)
 - [X] Run gem install bundler -v 1.17.3 (2.0 will not work)
 - [X] Run bundle
+
+##### Testing Solutions
 - [X] Add feature tests for posts index
 - [X] Add feature tests for posts show
 - [X] Add feature tests for users index
 - [X] Add feature tests for comments index
 - [ ] Add model tests
+
+##### Routes Solutions
 - [X] Use resources :posts, only: [:index, :show] line to remove unused actions
 - [ ] Add resources for comments, only: [:index]
 
+##### Model Solutions
 - [ ] Use model tests to validate necessary attributes
 - [ ] Move logic from controller to model (sort)
 - [ ] Eliminate redundancies
 
+##### Controller Solutions
 - [ ] Move logic from controller to model (sort)
 - [ ] Create comments controller
 - [ ] Remove unnecessary and expensive instance variables (use @user.posts instead of creating @posts)
 
+##### Views Solutions
 - [ ] Create relationship from comments to user, add link_to path
 - [ ] Add serializers for JSON data
 
