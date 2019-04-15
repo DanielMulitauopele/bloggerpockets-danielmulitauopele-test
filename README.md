@@ -56,31 +56,37 @@ I chose to approach this take home exercise with a step-by-step methodology. In 
 
 * Different versions of Ruby
 * Different versions of Bundler
-**See Setup Solutions**
+
+*See [Setup Solutions](#setup-solutions)*
 
 * No testing at all (lack of testing makes refactoring difficult)
-**See Testing Solutions**
+
+*See [Testing Solutions](#testing-solutions)*
 
 * Unused routes (create, edit, new actions)
 * Comments did not have proper routes
-**See Routes Solutions**
+
+*See [Routes Solutions](#routes-solutions)*
 
 * Certain attributes in models are not validated
 * Most DB logic should exist here, but it does not
 * Code is not optimized, uses redundancies
 * Scope logic
-**See Model Solutions**
+
+*See [Model Solutions](#model-solutions)*
 
 * A good amount of logic is done in the controllers, these should be pushed down to the model level
 * Comments method in the posts controller disobeys restful architecture (goes back to routes)
 * Sort logic in posts controller belong in model
 * Unnecessary instance variables
-**See Controller Solutions**
+
+*See [Controller Solutions](#controller-solutions)*
 
 * Comments index lists user name, but the link doesn’t work
 * Comments view page uses both ordered list and unordered list on the same list. Needs adjustment of HTML.
 * JSON delivers too much data to user, should use serializers to limit what the user gets to see (PASSWORD DIGEST SHOULD NOT BE VISIBLE)
-**See Views Solutions**
+
+*See [Views Solutions](#views-solutions)*
 
 ### Solutions
 
