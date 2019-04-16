@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.published
+    @posts = Post.published.includes(:user)
     @posts = @posts.switch_order(params[:sort]) if params[:sort]
 
     respond_to :html
