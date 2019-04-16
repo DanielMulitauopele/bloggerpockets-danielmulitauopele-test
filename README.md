@@ -96,6 +96,8 @@ With these assumptions in mind, I began work on refactoring code so that the mai
 * Sort logic in posts controller belong in model
 * Published scope is not used in posts controller
 * Unnecessary instance variables
+* SQL injection vulnerabilitues with the sort
+* SQL makes too many calls to the database
 
 *See [Controller Solutions](#controller-solutions)*
 
@@ -142,6 +144,9 @@ With these assumptions in mind, I began work on refactoring code so that the mai
 - [X] Create comments controller with index action
 - [X] Remove unnecessary and expensive instance variables (use @user.posts in views instead of creating @posts)
 - [X] Refactor controller code for easier reading (respond_to :html, instead respond_to block with |format|)
+- [X] Addresses SQL injection vulnerablity
+- [X] Uses includes to reduce the number of database queries
+
 
 ##### Views Solutions
 - [X] Create relationship link from comments to user, add link_to path
