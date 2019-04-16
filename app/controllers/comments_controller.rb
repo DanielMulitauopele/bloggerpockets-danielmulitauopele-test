@@ -2,7 +2,7 @@
 
 class CommentsController < ApplicationController
   def index
-    @post = Post.find(params[:post_id])
+    @post = Post.includes(:comments, :user).find(params[:post_id])
 
     respond_to :html
   end
